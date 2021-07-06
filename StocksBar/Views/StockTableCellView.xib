@@ -43,7 +43,7 @@
                             <constraints>
                                 <constraint firstAttribute="width" constant="70" id="6Fd-Uh-Bhq"/>
                             </constraints>
-                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="10.24" id="kEc-aQ-Yrb">
+                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="price" id="kEc-aQ-Yrb">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -119,7 +119,7 @@
                 <outlet property="priceLabel" destination="6UP-nM-gu6" id="mU9-Vb-e8Q"/>
                 <outlet property="symbolLabel" destination="Omx-Ry-3ao" id="F8h-XJ-WVr"/>
             </connections>
-            <point key="canvasLocation" x="159" y="28.5"/>
+            <point key="canvasLocation" x="159" y="28"/>
         </customView>
     </objects>
     <resources>

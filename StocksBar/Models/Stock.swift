@@ -39,14 +39,21 @@ class Stock: NSObject, Codable {
     
     var reminder = Reminder()
     
+    var numOfPosition: Int = 0
+    
     var isFavorited = false
     
     init(code: String) {
         self.code = code
     }
     
+    func update_num(num: Int){
+        self.numOfPosition = num
+    }
+    
     func update(with newStock: Stock) {
         self.symbol = newStock.symbol
+        self.numOfPosition = newStock.numOfPosition
         self.openPrice = newStock.openPrice
         self.lastClosedPrice = newStock.lastClosedPrice
         if newStock.current == 0 {

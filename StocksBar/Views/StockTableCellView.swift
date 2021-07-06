@@ -18,6 +18,8 @@ class StockTableCellView: NSTableCellView {
 
     @IBOutlet weak var priceLabel: NSTextField!
     
+    @IBOutlet weak var numLabel: NSTextField!
+    
     @IBOutlet weak var percentView: NSView!
     
     @IBOutlet weak var percentLabel: NSTextField!
@@ -50,6 +52,7 @@ class StockTableCellView: NSTableCellView {
     func update(_ stock: Stock) {
         symbolLabel.stringValue = stock.symbol
         priceLabel.stringValue = String(format: "%.3f", stock.current)
+//        numLabel.stringValue = String(format: "%.3f", stock.numOfPosition)
         percentLabel.stringValue = stock.displayPercent
         
         switch AppPreferences.shared.percentViewStyle {

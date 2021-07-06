@@ -80,4 +80,11 @@ extension AppDelegate {
         let size = (title as NSString).size(withAttributes: [.font: NSFont.systemFont(ofSize: 16)])
         statusItem.length = size.width
     }
+    
+    func update_title(title: String) {
+        statusItem.title = title
+        let size = (title as NSString).size(withAttributes: [.font: NSFont.systemFont(ofSize: 16)])
+        statusItem.length = size.width
+    }
+    
 }

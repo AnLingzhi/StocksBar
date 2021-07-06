@@ -580,7 +580,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 16;
-				DEVELOPMENT_TEAM = LX863G777H;
+				DEVELOPMENT_TEAM = 843GDSDK7C;
 				INFOPLIST_FILE = "$(SRCROOT)/StocksBar/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -605,7 +605,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 16;
-				DEVELOPMENT_TEAM = LX863G777H;
+				DEVELOPMENT_TEAM = 843GDSDK7C;
 				INFOPLIST_FILE = "$(SRCROOT)/StocksBar/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
