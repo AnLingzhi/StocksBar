@@ -19,9 +19,11 @@ class StockRemindViewController: NSViewController {
     @IBOutlet weak var codeLabel: NSTextField!
     
     @IBOutlet weak var priceLabel: NSTextField!
-    
-    @IBOutlet weak var numLabel: NSTextField!
-    
+
+    @IBOutlet weak var marketvalueLabel: NSTextField!
+
+    @IBOutlet weak var polLabel: NSTextField!
+        
     @IBOutlet weak var percentLabel: NSTextField!
     
     @IBOutlet weak var highPriceTextField: NSTextField!
@@ -39,8 +41,9 @@ class StockRemindViewController: NSViewController {
         self.stock = stock
         symbolLabel.stringValue = stock.symbol
         codeLabel.stringValue = stock.code
-        priceLabel.stringValue = String(format: "%.2f", stock.current)
-        numLabel.stringValue = String(format: "%d", stock.numOfPosition)
+        priceLabel.stringValue = String(format: "%.2f ", stock.current)
+        polLabel.stringValue = stock.displayPoL
+        marketvalueLabel.stringValue = stock.displayMarketValue
         percentLabel.stringValue = stock.displayPercent
         percentLabel.textColor = stock.displayColor
         

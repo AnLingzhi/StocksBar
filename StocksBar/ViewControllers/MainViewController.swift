@@ -36,7 +36,7 @@ class MainViewController: NSViewController {
         setupContainerView()
         setupFooterView()
         addStocksViewController()
-        addSearchViewController()
+//        addSearchViewController()
         
         StockDataSource.shared.updatedHandler = {
             self.stocksViewController.reloadData()
@@ -46,7 +46,7 @@ class MainViewController: NSViewController {
     }
     
     override func loadView() {
-        self.view = NSView(frame: NSRect(x: 0, y: 0, width: 300, height: 450))
+        self.view = NSView(frame: NSRect(x: 0, y: 0, width: 500, height: 950))
     }
     
     private func setupEffectView() {
@@ -70,11 +70,11 @@ class MainViewController: NSViewController {
         headerView.headerCommand = { [weak self] in
             self?.stocksViewController.editTableView()
         }
-        headerView.searchField.delegate = self
+//        headerView.searchField.delegate = self
     }
     
     private func setupContainerView() {
-        containerView = NSView(frame: NSRect(x: 0, y: 50, width: 300, height: 350))
+        containerView = NSView(frame: NSRect(x: 0, y: 50, width: 500, height: 850))
         view.addSubview(containerView)
         containerView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()

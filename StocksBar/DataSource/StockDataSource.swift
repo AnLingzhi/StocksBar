@@ -55,19 +55,24 @@ class StockDataSource: NSObject {
                                      ,"sz000538": 200
                                      ,"sz000851": 1000
                                      ,"sz002456": 600
-                                     ,"sh513550": 4200]
+                                     ,"sh513550": 4200
+                                     ,"sh000001": 0
+                                     ,"sz399006": 0
+                                     ,"sh000688": 0]
     
     private override init() {
         super.init()
-        if let data = try? Data(contentsOf: fileURL),
-            let list = try? JSONDecoder().decode([Stock].self, from: data), list.count > 0 {
-            content = list
-            updatedHandler?()
-        } else {
+//        if let data = try? Data(contentsOf: fileURL),
+//            let list = try? JSONDecoder().decode([Stock].self, from: data), list.count > 0 {
+//            content = list
+//            updatedHandler?()
+//        } else
+        if(true)
+        {
             for (stock_code, stock_num) in defaultStocks {
                 content.append(Stock(code:stock_code))
-                content[content.count-1].update_num(num: stock_num)
-                print(stock_code, stock_num, content[content.count-1].code, content[content.count-1].numOfPosition)
+//                content[content.count-1].update_num(num: stock_num)
+                print(stock_code, content[content.count-1].symbol, content[content.count-1].numOfPosition)
             }
             save()
         }
@@ -82,6 +87,11 @@ class StockDataSource: NSObject {
     
     func data(atIndex index: Int) -> Stock {
         return content[index]
+    }
+    
+    func numOfPosition(code: String) -> Int {
+//        print(code, defaultStocks[code]!)
+        return defaultStocks[code]!
     }
     
     func add(stock: Stock) {
@@ -149,6 +159,21 @@ class StockDataSource: NSObject {
         updatedHandler?()
     }
     
+    func onSort(s1:Stock, s2:Stock) -> Bool{
+        let a = Float(s1.numOfPosition) * s1.current
+        let b = Float(s2.numOfPosition) * s2.current
+        print(a, b)
+        return a > b
+    }
+    
+    func sortStocks() {
+        var array = content
+        array.sort(by: onSort)
+        content = array
+        save()
+        updatedHandler?()
+    }
+    
     func search(suggestion: String, completion: @escaping StocksAPICompletion) {
         api.suggestion(key: suggestion, completion: completion)
     }
@@ -159,6 +184,7 @@ class StockDataSource: NSObject {
         if content.count == 0 {
             return
         }
+        
         let codes = content.map { return $0.code }
         api.request(codes: codes) { (stocks, error) in
             if let error = error {
@@ -180,6 +206,7 @@ class StockDataSource: NSObject {
             }
             checkRemind(stock: stock)
         }
+        self.sortStocks()
     }
     
     private func checkRemind(stock: Stock) {
@@ -221,7 +248,43 @@ class StockDataSource: NSObject {
                 sum_lst += (stock.lastClosedPrice * Float(numOfPosition!))
             }
         }
-        let title_str = String(format: "总:%.2f 额:%.2f 幅:%.2f%%", sum, sum-sum_lst, 100*(sum-sum_lst)/sum_lst)
+        let chg = sum-sum_lst
+        let chgP = 100 * chg / sum_lst
+        var face1:String = "🈵️"
+        var face2:String = "❤️‍🔥"
+        var face3:String = "😄"
+        if(chgP > 2){
+            face1 = "🈵️"
+            face2 = "❤️‍🔥"
+            face3 = "😍"
+        }
+        else if(chgP>1){
+            face1 = "🈵️"
+            face2 = "💖"
+            face3 = "🥰"
+        }
+        else if(chgP>0){
+            face1 = "🈵️"
+            face2 = "❤️"
+            face3 = "😘"
+        }
+        else if(chgP>(-1)){
+            face1 = "💰"
+            face2 = "💔"
+            face3 = "🥺"
+        }
+        else if(chgP>(-2)){
+            face1 = "💰"
+            face2 = "💔"
+            face3 = "😰"
+        }
+        else{
+            face1 = "💊"
+            face2 = "💔"
+            face3 = "😱"
+        }
+        
+        let title_str = String(format: "%@:%.2f %@:%.2f %@:%.2f%%", face1, sum, face2, chg, face3, chgP)
         appDelegate?.update_title(title: title_str)
     }
 }

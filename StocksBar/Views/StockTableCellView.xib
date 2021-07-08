@@ -10,11 +10,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="c22-O7-iKe" customClass="StockTableCellView" customModule="StocksBar" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="518" height="38"/>
+            <rect key="frame" x="0.0" y="0.0" width="782" height="43"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="EZk-fM-wHy" userLabel="Delete Button">
-                    <rect key="frame" x="-24" y="9" width="20" height="20"/>
+                    <rect key="frame" x="-24" y="12" width="20" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="20" id="gam-R9-ozp"/>
                         <constraint firstAttribute="height" constant="20" id="hlQ-fd-ph4"/>
@@ -28,29 +28,40 @@
                     </connections>
                 </button>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="13t-yq-vRe" userLabel="Content View">
-                    <rect key="frame" x="0.0" y="0.0" width="518" height="38"/>
+                    <rect key="frame" x="0.0" y="0.0" width="782" height="43"/>
                     <subviews>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Omx-Ry-3ao">
-                            <rect key="frame" x="3" y="11" width="363" height="16"/>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Omx-Ry-3ao">
+                            <rect key="frame" x="3" y="3" width="50" height="27"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="Symbol" id="Urw-8P-3cA">
                                 <font key="font" textStyle="body" name=".SFNS-Regular"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6UP-nM-gu6">
-                            <rect key="frame" x="362" y="11" width="74" height="16"/>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4zx-eW-r0m">
+                            <rect key="frame" x="83" y="14" width="80" height="16"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="70" id="6Fd-Uh-Bhq"/>
+                                <constraint firstAttribute="width" constant="70" id="V8e-wj-7ab"/>
                             </constraints>
-                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="price" id="kEc-aQ-Yrb">
+                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="MarketValue" id="3k4-vR-upJ">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="RfE-IP-eon" userLabel="Percent View">
-                            <rect key="frame" x="434" y="7" width="64" height="24"/>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KH3-GJ-9on">
+                            <rect key="frame" x="224" y="14" width="74" height="16"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="70" id="BDd-w8-p5I"/>
+                            </constraints>
+                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="PoL" id="mac-Af-dbj">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <customView misplaced="YES" placeholderIntrinsicWidth="518" placeholderIntrinsicHeight="24" translatesAutoresizingMaskIntoConstraints="NO" id="RfE-IP-eon" userLabel="Percent View">
+                            <rect key="frame" x="645" y="6" width="118" height="31"/>
                             <subviews>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OQi-KE-eQz" userLabel="Percent Label">
                                     <rect key="frame" x="25" y="5" width="14" height="14"/>
@@ -68,6 +79,17 @@
                                 <constraint firstItem="OQi-KE-eQz" firstAttribute="centerY" secondItem="RfE-IP-eon" secondAttribute="centerY" id="bht-iJ-krF"/>
                             </constraints>
                         </customView>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6UP-nM-gu6">
+                            <rect key="frame" x="455" y="13" width="90" height="16"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="70" id="6Fd-Uh-Bhq"/>
+                            </constraints>
+                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="price" id="kEc-aQ-Yrb">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="RfE-IP-eon" secondAttribute="trailing" constant="20" id="7SG-jR-i0S"/>
@@ -80,7 +102,7 @@
                     </constraints>
                 </customView>
                 <button hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="haZ-VN-86Z" userLabel="Drag Button">
-                    <rect key="frame" x="522" y="9" width="20" height="20"/>
+                    <rect key="frame" x="786" y="12" width="20" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="20" id="0qQ-pb-SpD"/>
                         <constraint firstAttribute="height" constant="20" id="Mt5-JB-VJI"/>
@@ -91,7 +113,7 @@
                     </buttonCell>
                 </button>
                 <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="OHm-fi-XIH">
-                    <rect key="frame" x="0.0" y="-1" width="518" height="5"/>
+                    <rect key="frame" x="0.0" y="-1" width="782" height="5"/>
                 </box>
             </subviews>
             <constraints>
@@ -114,12 +136,14 @@
                 <outlet property="deleteButtonLeadingConstraint" destination="xSg-qD-qhp" id="pOD-jy-MZ9"/>
                 <outlet property="dragButton" destination="haZ-VN-86Z" id="yFN-Fe-5xK"/>
                 <outlet property="dragButtonTraillingConstraint" destination="WNg-eh-Or1" id="B8M-SF-NMT"/>
+                <outlet property="marketvalueLabel" destination="4zx-eW-r0m" id="mU9-Vb-e8O"/>
                 <outlet property="percentLabel" destination="OQi-KE-eQz" id="Z8H-aQ-ulp"/>
                 <outlet property="percentView" destination="RfE-IP-eon" id="Crd-Gb-kR1"/>
+                <outlet property="polLabel" destination="KH3-GJ-9on" id="mU9-Vb-e8P"/>
                 <outlet property="priceLabel" destination="6UP-nM-gu6" id="mU9-Vb-e8Q"/>
                 <outlet property="symbolLabel" destination="Omx-Ry-3ao" id="F8h-XJ-WVr"/>
             </connections>
-            <point key="canvasLocation" x="159" y="28"/>
+            <point key="canvasLocation" x="291" y="30.5"/>
         </customView>
     </objects>
     <resources>

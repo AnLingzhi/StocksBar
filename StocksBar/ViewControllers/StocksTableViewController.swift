@@ -106,6 +106,7 @@ extension StocksTableViewController: NSTableViewDataSource, NSTableViewDelegate 
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let stock = StockDataSource.shared.data(atIndex: row)
+//        print(stock.symbol)
         if let cell = tableView.makeView(withIdentifier: reuseIdentifier, owner: self) as? StockTableCellView {
             cell.update(stock)
             cell.deleteCommand = { [weak self] in

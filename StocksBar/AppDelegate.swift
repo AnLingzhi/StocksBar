@@ -34,11 +34,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         let controller = MainViewController()
-        controller.view.frame = NSRect(x: 0, y: 0, width: 300, height: 450)
+        controller.view.frame = NSRect(x: 0, y: 0, width: 500, height: 950)
         
         popover.backgroundColor = NSColor(white: 247.0/255, alpha: 1.0)
         popover.contentViewController = controller
-        popover.contentSize = NSSize(width: 300, height: 450)
+        popover.contentSize = NSSize(width: 500, height: 950)
         popover.appearance = NSAppearance(named: .aqua)
         popover.animates = false
         popover.behavior = .transient
@@ -75,6 +75,7 @@ extension AppDelegate {
         guard let stock = stock else {
             return
         }
+
         let title = String(format: "%@ %.3f %@", stock.symbol, stock.current, stock.displayPercent)
         statusItem.title = title
         let size = (title as NSString).size(withAttributes: [.font: NSFont.systemFont(ofSize: 16)])

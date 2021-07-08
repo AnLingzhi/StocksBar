@@ -17,9 +17,11 @@ class StockTableCellView: NSTableCellView {
     @IBOutlet weak var symbolLabel: NSTextField!
 
     @IBOutlet weak var priceLabel: NSTextField!
-    
-    @IBOutlet weak var numLabel: NSTextField!
-    
+
+    @IBOutlet weak var marketvalueLabel: NSTextField!
+
+    @IBOutlet weak var polLabel: NSTextField!
+        
     @IBOutlet weak var percentView: NSView!
     
     @IBOutlet weak var percentLabel: NSTextField!
@@ -50,11 +52,14 @@ class StockTableCellView: NSTableCellView {
     }
     
     func update(_ stock: Stock) {
+
         symbolLabel.stringValue = stock.symbol
-        priceLabel.stringValue = String(format: "%.3f", stock.current)
-//        numLabel.stringValue = String(format: "%.3f", stock.numOfPosition)
-        percentLabel.stringValue = stock.displayPercent
-        
+        priceLabel.stringValue = String(format: "%.2f ", stock.current)
+        marketvalueLabel.stringValue = stock.displayMarketValue
+        polLabel.stringValue = stock.displayPoL
+
+        let displayText = stock.displayPercent
+        percentLabel.stringValue = displayText
         switch AppPreferences.shared.percentViewStyle {
         case .rich:
             percentLabel.textColor = NSColor.white

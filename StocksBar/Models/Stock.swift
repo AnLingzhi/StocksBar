@@ -46,15 +46,11 @@ class Stock: NSObject, Codable {
     init(code: String) {
         self.code = code
     }
-    
-    func update_num(num: Int){
-        self.numOfPosition = num
-    }
-    
+        
     func update(with newStock: Stock) {
         self.symbol = newStock.symbol
-        self.numOfPosition = newStock.numOfPosition
         self.openPrice = newStock.openPrice
+        self.numOfPosition = StockDataSource.shared.numOfPosition(code: self.code)
         self.lastClosedPrice = newStock.lastClosedPrice
         if newStock.current == 0 {
             self.current = newStock.lastClosedPrice
@@ -76,7 +72,7 @@ extension Stock {
         }
         return (current - lastClosedPrice)/lastClosedPrice
     }
-    
+        
     var displayPercent: String {
         let p = percent
         if p > 0 {
@@ -86,6 +82,20 @@ extension Stock {
         } else {
             return "0.0%"
         }
+    }
+    
+    var displayPoL: String {
+//        let p = (current - lastClosedPrice) * Float(StockDataSource.shared.numOfPosition(code:code))
+        let p = StockDataSource.shared.numOfPosition(code:code)
+//        print(Float(p))
+        return String(format: "%.2f", (current - lastClosedPrice) * Float(p))
+    }
+    
+    var displayMarketValue: String {
+//        let p = (current - lastClosedPrice) * Float(StockDataSource.shared.numOfPosition(code:code))
+        let p = StockDataSource.shared.numOfPosition(code:code)
+//        print(Float(p))
+        return String(format: "%.2f", (current) * Float(p))
     }
     
     var displayColor: NSColor {

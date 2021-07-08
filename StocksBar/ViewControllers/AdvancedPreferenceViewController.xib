@@ -59,7 +59,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xKn-cY-Fmg" userLabel="Plain Style Button">
-                    <rect key="frame" x="179" y="22" width="22" height="18"/>
+                    <rect key="frame" x="179" y="22" width="42" height="18"/>
                     <buttonCell key="cell" type="radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="mRO-IE-c7w">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -77,7 +77,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="255-iX-Rm9" userLabel="Rich Style Button">
-                    <rect key="frame" x="270" y="22" width="22" height="18"/>
+                    <rect key="frame" x="270" y="22" width="42" height="18"/>
                     <buttonCell key="cell" type="radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="fTm-WN-Bbh">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
