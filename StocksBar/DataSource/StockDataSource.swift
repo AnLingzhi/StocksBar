@@ -31,7 +31,7 @@ class StockDataSource: NSObject {
             name = "stocks.data"
         #endif
         let path = NSHomeDirectory().appending("/Documents/\(name)")
-        print(path)
+//        print(path)
         return URL(fileURLWithPath: path)
     }
     
@@ -62,17 +62,14 @@ class StockDataSource: NSObject {
     
     private override init() {
         super.init()
-//        if let data = try? Data(contentsOf: fileURL),
-//            let list = try? JSONDecoder().decode([Stock].self, from: data), list.count > 0 {
-//            content = list
-//            updatedHandler?()
-//        } else
-        if(true)
-        {
-            for (stock_code, stock_num) in defaultStocks {
+        if let data = try? Data(contentsOf: fileURL),
+            let list = try? JSONDecoder().decode([Stock].self, from: data), list.count > 0 {
+            content = list
+            updatedHandler?()
+        } else {
+            for (stock_code, _) in defaultStocks {
                 content.append(Stock(code:stock_code))
-//                content[content.count-1].update_num(num: stock_num)
-                print(stock_code, content[content.count-1].symbol, content[content.count-1].numOfPosition)
+                print(stock_code, content[content.count-1].numOfPosition)
             }
             save()
         }
@@ -162,7 +159,7 @@ class StockDataSource: NSObject {
     func onSort(s1:Stock, s2:Stock) -> Bool{
         let a = Float(s1.numOfPosition) * s1.current
         let b = Float(s2.numOfPosition) * s2.current
-        print(a, b)
+//        print(a, b)
         return a > b
     }
     
