@@ -59,15 +59,33 @@ class StockDataSource: NSObject {
                                      ,"sh000001": 0
                                      ,"sz399006": 0
                                      ,"sh000688": 0]
+//    var defaultStocks:[String:Int] = ["sz002409": 400,
+//                                    "sz300316": 400,
+//                                    "sz300496": 200,
+//                                    "sz300487": 700,
+//                                    "sh603501": 100,
+//                                    "sh600563": 200,
+//                                    "sz300747": 300,
+//                                    "sh603260": 400,
+//                                    "sz300751": 100,
+//                                    "sz300015": 600,
+//                                    "sh600315": 400,
+//                                    "sh600132": 200]
+//    
+    var confStocks:[String:Int] = ["sh000001": 0]
     
     private override init() {
         super.init()
         if let data = try? Data(contentsOf: fileURL),
             let list = try? JSONDecoder().decode([Stock].self, from: data), list.count > 0 {
             content = list
+            for stock in content {
+                confStocks[stock.code] = stock.numOfPosition
+            }
             updatedHandler?()
         } else {
-            for (stock_code, _) in defaultStocks {
+            for (stock_code, stock_num) in defaultStocks {
+                confStocks[stock_code] = stock_num
                 content.append(Stock(code:stock_code))
                 print(stock_code, content[content.count-1].numOfPosition)
             }
@@ -88,7 +106,7 @@ class StockDataSource: NSObject {
     
     func numOfPosition(code: String) -> Int {
 //        print(code, defaultStocks[code]!)
-        return defaultStocks[code]!
+        return confStocks[code]!
     }
     
     func add(stock: Stock) {
@@ -239,7 +257,7 @@ class StockDataSource: NSObject {
         var sum:Float = 0
         var sum_lst:Float = 0
         for stock in content {
-            let numOfPosition = defaultStocks[stock.code]
+            let numOfPosition = confStocks[stock.code]
             if numOfPosition != nil{
                 sum += (stock.current * Float(numOfPosition!))
                 sum_lst += (stock.lastClosedPrice * Float(numOfPosition!))
