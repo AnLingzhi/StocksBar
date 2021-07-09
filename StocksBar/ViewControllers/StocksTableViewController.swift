@@ -172,7 +172,7 @@ extension StocksTableViewController: NSMenuDelegate {
         menu.addItem(NSMenuItem(title: "卖1手", action: #selector(handleSell1), keyEquivalent: ""))
         menu.addItem(NSMenuItem(title: "清仓", action: #selector(handleClearance), keyEquivalent: ""))
         //menu.addItem(NSMenuItem(title: "删除", action: #selector(handleDeleteRow), keyEquivalent: ""))
-        menu.addItem(NSMenuItem(title: "提醒", action: #selector(priceReminder), keyEquivalent: ""))
+//        menu.addItem(NSMenuItem(title: "提醒", action: #selector(priceReminder), keyEquivalent: ""))
         
         let deleteText = NSAttributedString(string: "删除", attributes: [
             NSAttributedString.Key.foregroundColor: NSColor.red
