@@ -36,7 +36,7 @@ class MainViewController: NSViewController {
         setupContainerView()
         setupFooterView()
         addStocksViewController()
-//        addSearchViewController()
+        addSearchViewController()
         
         StockDataSource.shared.updatedHandler = {
             self.stocksViewController.reloadData()
@@ -70,7 +70,7 @@ class MainViewController: NSViewController {
         headerView.headerCommand = { [weak self] in
             self?.stocksViewController.editTableView()
         }
-//        headerView.searchField.delegate = self
+        headerView.searchField.delegate = self
     }
     
     private func setupContainerView() {

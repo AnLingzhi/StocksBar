@@ -106,7 +106,6 @@ extension StocksTableViewController: NSTableViewDataSource, NSTableViewDelegate 
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let stock = StockDataSource.shared.data(atIndex: row)
-//        print(stock.symbol)
         if let cell = tableView.makeView(withIdentifier: reuseIdentifier, owner: self) as? StockTableCellView {
             cell.update(stock)
             cell.deleteCommand = { [weak self] in
@@ -160,7 +159,18 @@ extension StocksTableViewController: NSTableViewDataSource, NSTableViewDelegate 
 extension StocksTableViewController: NSMenuDelegate {
     func menuNeedsUpdate(_ menu: NSMenu) {
         menu.removeAllItems()
-        menu.addItem(NSMenuItem(title: "置顶", action: #selector(handleTopRow), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "买1手", action: #selector(handleBuy1), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "买2手", action: #selector(handleBuy2), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "买3手", action: #selector(handleBuy3), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "买4手", action: #selector(handleBuy4), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "买5手", action: #selector(handleBuy5), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "买6手", action: #selector(handleBuy6), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "买7手", action: #selector(handleBuy7), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "买8手", action: #selector(handleBuy8), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "买9手", action: #selector(handleBuy9), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "买10手", action: #selector(handleBuy10), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "卖1手", action: #selector(handleSell1), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "清仓", action: #selector(handleClearance), keyEquivalent: ""))
         //menu.addItem(NSMenuItem(title: "删除", action: #selector(handleDeleteRow), keyEquivalent: ""))
         menu.addItem(NSMenuItem(title: "提醒", action: #selector(priceReminder), keyEquivalent: ""))
         
@@ -180,13 +190,90 @@ extension StocksTableViewController: NSMenuDelegate {
         }
     }
     
-    @objc private func handleTopRow() {
+    @objc private func handleClearance() {
         let clickedRow = tableView.clickedRow
         if clickedRow >= 0 {
-            StockDataSource.shared.stickToTop(at: clickedRow)
+            StockDataSource.shared.clearance(at: clickedRow)
         }
     }
     
+    @objc private func handleBuy1() {
+        let clickedRow = tableView.clickedRow
+        if clickedRow >= 0 {
+            StockDataSource.shared.buy(at: clickedRow, num: 1)
+        }
+    }
+    
+    @objc private func handleBuy2() {
+        let clickedRow = tableView.clickedRow
+        if clickedRow >= 0 {
+            StockDataSource.shared.buy(at: clickedRow, num: 2)
+        }
+    }
+    
+    @objc private func handleBuy3() {
+        let clickedRow = tableView.clickedRow
+        if clickedRow >= 0 {
+            StockDataSource.shared.buy(at: clickedRow, num: 3)
+        }
+    }
+    
+    @objc private func handleBuy4() {
+        let clickedRow = tableView.clickedRow
+        if clickedRow >= 0 {
+            StockDataSource.shared.buy(at: clickedRow, num: 4)
+        }
+    }
+    
+    @objc private func handleBuy5() {
+        let clickedRow = tableView.clickedRow
+        if clickedRow >= 0 {
+            StockDataSource.shared.buy(at: clickedRow, num: 5)
+        }
+    }
+    
+    @objc private func handleBuy6() {
+        let clickedRow = tableView.clickedRow
+        if clickedRow >= 0 {
+            StockDataSource.shared.buy(at: clickedRow, num: 6)
+        }
+    }
+    
+    @objc private func handleBuy7() {
+        let clickedRow = tableView.clickedRow
+        if clickedRow >= 0 {
+            StockDataSource.shared.buy(at: clickedRow, num: 7)
+        }
+    }
+    
+    @objc private func handleBuy8() {
+        let clickedRow = tableView.clickedRow
+        if clickedRow >= 0 {
+            StockDataSource.shared.buy(at: clickedRow, num: 8)
+        }
+    }
+    
+    @objc private func handleBuy9() {
+        let clickedRow = tableView.clickedRow
+        if clickedRow >= 0 {
+            StockDataSource.shared.buy(at: clickedRow, num: 9)
+        }
+    }
+    
+    @objc private func handleBuy10() {
+        let clickedRow = tableView.clickedRow
+        if clickedRow >= 0 {
+            StockDataSource.shared.buy(at: clickedRow, num: 10)
+        }
+    }
+    
+    @objc private func handleSell1() {
+        let clickedRow = tableView.clickedRow
+        if clickedRow >= 0 {
+            StockDataSource.shared.sell(at: clickedRow, num: 1)
+        }
+    }
+
     @objc private func priceReminder() {
         let clickedRow = tableView.clickedRow
         if clickedRow >= 0 {

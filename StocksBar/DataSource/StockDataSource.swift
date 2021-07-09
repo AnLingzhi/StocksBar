@@ -31,7 +31,7 @@ class StockDataSource: NSObject {
             name = "stocks.data"
         #endif
         let path = NSHomeDirectory().appending("/Documents/\(name)")
-//        print(path)
+        print(path)
         return URL(fileURLWithPath: path)
     }
     
@@ -39,26 +39,27 @@ class StockDataSource: NSObject {
         return NSApplication.shared.delegate as? AppDelegate
     }
     
-    var defaultStocks:[String:Int] = ["sz300750": 700
-                                     ,"sh688356": 1000
-                                     ,"sz300496": 1500
-                                     ,"sh601888": 800
-                                     ,"sz300573": 1100
-                                     ,"sz300896": 100
-                                     ,"sh600771": 1200
-                                     ,"sh603893": 300
-                                     ,"sz300458": 300
-                                     ,"sz000876": 3500
-                                     ,"sh688613": 600
-                                     ,"sh600498": 1000
-                                     ,"sh688508": 200
-                                     ,"sz000538": 200
-                                     ,"sz000851": 1000
-                                     ,"sz002456": 600
-                                     ,"sh513550": 4200
-                                     ,"sh000001": 0
-                                     ,"sz399006": 0
-                                     ,"sh000688": 0]
+//    var defaultStocks:[String:Int] = ["sz300750": 700
+//                                     ,"sh688356": 1000
+//                                     ,"sz300496": 1500
+//                                     ,"sh601888": 800
+//                                     ,"sz300573": 1100
+//                                     ,"sz300896": 100
+//                                     ,"sh600771": 1400
+//                                     ,"sh603893": 300
+//                                     ,"sz300458": 300
+//                                     ,"sz000876": 3500
+//                                     ,"sh688613": 600
+//                                     ,"sh600498": 1000
+//                                     ,"sh688508": 200
+//                                     ,"sz000538": 200
+//                                     ,"sz000851": 1000
+//                                     ,"sz002456": 600
+//                                     ,"sh513550": 4200
+//                                     ,"sh000001": 0
+//                                     ,"sz399006": 0
+//                                     ,"sh000688": 0]
+//
 //    var defaultStocks:[String:Int] = ["sz002409": 400,
 //                                    "sz300316": 400,
 //                                    "sz300496": 200,
@@ -71,7 +72,12 @@ class StockDataSource: NSObject {
 //                                    "sz300015": 600,
 //                                    "sh600315": 400,
 //                                    "sh600132": 200]
-//    
+//
+    var defaultStocks:[String:Int] = ["sh000001": 0
+                                     ,"sz399006": 0
+                                     ,"sh000688": 0]
+    
+
     var confStocks:[String:Int] = ["sh000001": 0]
     
     private override init() {
@@ -105,8 +111,11 @@ class StockDataSource: NSObject {
     }
     
     func numOfPosition(code: String) -> Int {
-//        print(code, defaultStocks[code]!)
-        return confStocks[code]!
+        var num = confStocks[code]
+        if(nil == num){
+            num = 0
+        }
+        return num!
     }
     
     func add(stock: Stock) {
@@ -114,6 +123,7 @@ class StockDataSource: NSObject {
         if !array.contains(where: { $0.code == stock.code }) {
             array.insert(stock, at: 0)
             content = array
+            confStocks[stock.code] = stock.numOfPosition
             save()
             updatedHandler?()
         }
@@ -124,6 +134,7 @@ class StockDataSource: NSObject {
         if let index = array.firstIndex(where: { $0.code == stock.code }) {
             array.remove(at: index)
             content = array
+            confStocks[stock.code] = 0
             save()
         }
     }
@@ -147,13 +158,24 @@ class StockDataSource: NSObject {
         }
     }
     
-    func stickToTop(at index: Int) {
-        var array = content
-        let stock = array.remove(at: index)
-        array.insert(stock, at: 0)
-        content = array
+    func buy(at index: Int, num: Int) {
+        let stock = content[index]
+        confStocks[stock.code]! += (100 * num)
         save()
     }
+    
+    func sell(at index: Int, num: Int) {
+        let stock = content[index]
+        confStocks[stock.code]! -= (100 * num)
+        save()
+    }
+    
+    func clearance(at index: Int) {
+        let stock = content[index]
+        confStocks[stock.code]! = 0
+        save()
+    }
+    
     
     func updateReminderOfStock(_ newStock: Stock) {
         if let stock = content.first(where: { $0.code == newStock.code }) {
@@ -167,17 +189,16 @@ class StockDataSource: NSObject {
     }
     
     func move(from index: Int, to row: Int) {
-        var array = content
-        array.insert(array.remove(at: index), at: row)
-        content = array
-        save()
-        updatedHandler?()
+//        var array = content
+//        array.insert(array.remove(at: index), at: row)
+//        content = array
+//        save()
+//        updatedHandler?()
     }
     
     func onSort(s1:Stock, s2:Stock) -> Bool{
         let a = Float(s1.numOfPosition) * s1.current
         let b = Float(s2.numOfPosition) * s2.current
-//        print(a, b)
         return a > b
     }
     
@@ -249,11 +270,11 @@ class StockDataSource: NSObject {
 //        } else {
 //            appDelegate?.update(stock: content.first)
 //        }
-        
+//        
 //        for (stock_code, stock_num) in defaultStocks {
 //            print(stock_code, stock_num, content[])
 //        }
-//
+
         var sum:Float = 0
         var sum_lst:Float = 0
         for stock in content {

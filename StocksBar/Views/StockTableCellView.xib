@@ -39,22 +39,11 @@
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4zx-eW-r0m">
-                            <rect key="frame" x="83" y="14" width="80" height="16"/>
+                            <rect key="frame" x="50" y="14" width="150" height="16"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="70" id="V8e-wj-7ab"/>
+                                <constraint firstAttribute="width" constant="140" id="V8e-wj-7ab"/>
                             </constraints>
                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="MarketValue" id="3k4-vR-upJ">
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KH3-GJ-9on">
-                            <rect key="frame" x="224" y="14" width="74" height="16"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="70" id="BDd-w8-p5I"/>
-                            </constraints>
-                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="PoL" id="mac-Af-dbj">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -85,6 +74,17 @@
                                 <constraint firstAttribute="width" constant="70" id="6Fd-Uh-Bhq"/>
                             </constraints>
                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="price" id="kEc-aQ-Yrb">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KH3-GJ-9on">
+                            <rect key="frame" x="200" y="14" width="90" height="16"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="70" id="BDd-w8-p5I"/>
+                            </constraints>
+                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="PoL" id="mac-Af-dbj">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

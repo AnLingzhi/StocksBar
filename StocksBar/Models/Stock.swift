@@ -85,17 +85,13 @@ extension Stock {
     }
     
     var displayPoL: String {
-//        let p = (current - lastClosedPrice) * Float(StockDataSource.shared.numOfPosition(code:code))
         let p = StockDataSource.shared.numOfPosition(code:code)
-//        print(Float(p))
         return String(format: "%.2f", (current - lastClosedPrice) * Float(p))
     }
     
     var displayMarketValue: String {
-//        let p = (current - lastClosedPrice) * Float(StockDataSource.shared.numOfPosition(code:code))
         let p = StockDataSource.shared.numOfPosition(code:code)
-//        print(Float(p))
-        return String(format: "%.2f", (current) * Float(p))
+        return String(format: "%.2f@%d", (current) * Float(p), p)
     }
     
     var displayColor: NSColor {

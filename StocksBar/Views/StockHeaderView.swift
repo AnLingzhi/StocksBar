@@ -45,32 +45,31 @@ class StockHeaderView: NSView {
             make.leading.equalToSuperview().offset(50)
             make.trailing.equalToSuperview().offset(-50)
         }
-
         
-//        searchField = NSSearchField()
-//        searchField.focusRingType = .none
-//        searchField.placeholderString = "Search Stock"
-//        searchField.refusesFirstResponder = true
-//        addSubview(searchField)
-//        searchField.snp.makeConstraints { make in
-//            make.centerY.equalToSuperview()
-//            make.leading.equalToSuperview().offset(10)
-//            make.height.equalTo(28)
-//            make.trailing.equalToSuperview().offset(-40)
-//        }
-//
-//        listButton = NSButton(image: NSImage(named: "icon_list")!, target: self, action: #selector(handleTapListButton(_:)))
-//        listButton.isBordered = false
-//
-//        listButton.setButtonType(.momentaryPushIn)
-//        listButton.refusesFirstResponder = true
-//        addSubview(listButton)
-//        listButton.snp.makeConstraints { make in
-//            make.height.width.equalTo(20)
-//            make.centerY.equalToSuperview()
-//            make.trailing.equalToSuperview().offset(-12)
-//        }
-//
+        searchField = NSSearchField()
+        searchField.focusRingType = .none
+        searchField.placeholderString = "Search Stock"
+        searchField.refusesFirstResponder = true
+        addSubview(searchField)
+        searchField.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().offset(10)
+            make.height.equalTo(28)
+            make.trailing.equalToSuperview().offset(-40)
+        }
+
+        listButton = NSButton(image: NSImage(named: "icon_list")!, target: self, action: #selector(handleTapListButton(_:)))
+        listButton.isBordered = false
+
+        listButton.setButtonType(.momentaryPushIn)
+        listButton.refusesFirstResponder = true
+        addSubview(listButton)
+        listButton.snp.makeConstraints { make in
+            make.height.width.equalTo(20)
+            make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview().offset(-12)
+        }
+
         wantsLayer = true
         layer?.backgroundColor = NSColor(white: 1, alpha: 0.6).cgColor
     }
